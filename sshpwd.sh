@@ -4,11 +4,14 @@ echo "Введите enable для включения или disable для вы
 echo "Также можно использовать команду enable gen для генерации временного пароля."
 echo "Что нужно? " && read status
 if [ "$status" = "enable" ]; then
-sed -i 's/PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+sed -i 's/PubkeyAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
+service ssh restart
 elif [ "$status" = "disable" ]; then
-sed -i 's/PubkeyAuthentication.*/PubkeyAuthentication no/' /etc/ssh/sshd_config
+sed -i 's/PubkeyAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
+service ssh restart
 elif [ "$status" = "enable gen" ]; then
-sed -i 's/PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+sed -i 's/PubkeyAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
+service ssh restart
 echo "Пароль для пользователя" $password
 echo root:$password | chpasswd
 fi
