@@ -12,7 +12,6 @@ service ssh restart
 elif [ "$status" = "enable gen" ]; then
 sed -i 's/PubkeyAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
 service ssh restart
-echo "Пароль для пользователя" $password
+echo "Пароль для пользователя root" $password
 echo root:$password | chpasswd
 fi
-
