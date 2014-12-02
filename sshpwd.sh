@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 password=$(tr -dc A-Za-z0-9 < /dev/urandom | head -c15)
 echo "Введите enable для включения или disable для выключения авторизации по паролю."
 echo "Также можно использовать команду enable gen для генерации временного пароля."
